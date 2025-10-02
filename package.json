@@ -1,0 +1,60 @@
+{
+  "name": "editor-artigos-blog",
+  "version": "1.0.0",
+  "description": "Editor de Artigos para Blog Liberdade Médica",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "build-win": "electron-builder --win",
+    "build-mac": "electron-builder --mac",
+    "build-linux": "electron-builder --linux",
+    "dist": "electron-builder --publish=never"
+  },
+  "build": {
+    "appId": "com.liberdademedica.editor-artigos",
+    "productName": "Editor de Artigos - Blog Liberdade Médica",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "!node_modules/**/*",
+      "node_modules/pg/**/*"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "assets/icon.icns"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "assets/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  },
+  "keywords": [
+    "blog",
+    "editor",
+    "artigos",
+    "medicina",
+    "liberdade-medica"
+  ],
+  "author": "Liberdade Médica",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^27.0.0",
+    "electron-builder": "^24.6.4"
+  },
+  "dependencies": {
+    "pg": "^8.11.3"
+  }
+}

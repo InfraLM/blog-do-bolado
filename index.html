@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor de Artigos - Blog Liberdade Médica</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Editor de Artigos</h1>
+            <p>Sistema de criação de conteúdo para o blog Liberdade Médica</p>
+            <div class="status" id="status">Pronto</div>
+        </header>
+
+        <!-- Informações do Artigo -->
+        <section class="article-info">
+            <h2>Informações do Artigo</h2>
+            <div class="form-group">
+                <label for="titulo">Título do Artigo:</label>
+                <input type="text" id="titulo" placeholder="Digite o título do artigo">
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="categoria">Categoria:</label>
+                    <select id="categoria">
+                        <option value="">Selecione uma categoria</option>
+                        <option value="Medicina Geral">Medicina Geral</option>
+                        <option value="Cardiologia">Cardiologia</option>
+                        <option value="Dermatologia">Dermatologia</option>
+                        <option value="Endocrinologia">Endocrinologia</option>
+                        <option value="Gastroenterologia">Gastroenterologia</option>
+                        <option value="Ginecologia e Obstetrícia">Ginecologia e Obstetrícia</option>
+                        <option value="Neurologia">Neurologia</option>
+                        <option value="Oftalmologia">Oftalmologia</option>
+                        <option value="Ortopedia">Ortopedia</option>
+                        <option value="Otorrinolaringologia">Otorrinolaringologia</option>
+                        <option value="Pediatria">Pediatria</option>
+                        <option value="Psiquiatria">Psiquiatria</option>
+                        <option value="Reumatologia">Reumatologia</option>
+                        <option value="Urologia">Urologia</option>
+                        <option value="Medicina de Emergência">Medicina de Emergência</option>
+                        <option value="Medicina Preventiva">Medicina Preventiva</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="autor">Autor:</label>
+                    <input type="text" id="autor" placeholder="Nome do autor">
+                </div>
+            </div>
+        </section>
+
+        <!-- Construtor de Conteúdo -->
+        <section class="content-builder">
+            <div class="builder-panel">
+                <h2>Construtor de Conteúdo</h2>
+                <p>Adicione blocos de conteúdo para construir seu artigo. Cada bloco pode ser um título (H1-H6) ou parágrafo (P).</p>
+                
+                <div class="form-group">
+                    <label for="conteudo">Conteúdo:</label>
+                    <textarea id="conteudo" rows="4" placeholder="Digite o conteúdo deste bloco"></textarea>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="tipo">Tipo:</label>
+                        <select id="tipo">
+                            <option value="p">Parágrafo (P)</option>
+                            <option value="h1">Título 1 (H1)</option>
+                            <option value="h2">Título 2 (H2)</option>
+                            <option value="h3">Título 3 (H3)</option>
+                            <option value="h4">Título 4 (H4)</option>
+                            <option value="h5">Título 5 (H5)</option>
+                            <option value="h6">Título 6 (H6)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button id="addBlock" class="btn btn-primary">+ Adicionar Bloco</button>
+                    </div>
+                </div>
+
+                <!-- Lista de Blocos -->
+                <div class="blocks-section">
+                    <h3>Blocos de Conteúdo</h3>
+                    <div id="blocksList" class="blocks-list">
+                        <p class="empty-state">Nenhum bloco adicionado ainda.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pré-visualização -->
+            <div class="preview-panel">
+                <h2>Pré-visualização</h2>
+                <div id="preview" class="preview-content">
+                    <p class="empty-preview">A pré-visualização aparecerá aqui conforme você adiciona blocos de conteúdo.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ações -->
+        <section class="actions">
+            <button id="saveDraft" class="btn btn-secondary">💾 Salvar Rascunho</button>
+            <button id="loadDraft" class="btn btn-secondary">📂 Carregar Rascunho</button>
+            <button id="exportHtml" class="btn btn-secondary">📄 Exportar HTML</button>
+            <button id="publishArticle" class="btn btn-success">🚀 Publicar no Blog</button>
+        </section>
+    </div>
+
+    <script src="renderer.js"></script>
+</body>
+</html>
