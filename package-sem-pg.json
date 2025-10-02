@@ -1,0 +1,27 @@
+{
+  "name": "editor-artigos-local",
+  "version": "1.0.0",
+  "description": "Editor de Artigos - Versão Local (sem PostgreSQL)",
+  "main": "app-sem-pg.js",
+  "scripts": {
+    "start": "node app-sem-pg.js",
+    "build-exe": "pkg app-sem-pg.js --target node18-win-x64 --output EditorArtigos-Local.exe"
+  },
+  "bin": {
+    "editor-artigos": "app-sem-pg.js"
+  },
+  "pkg": {
+    "assets": [
+      "public/**/*"
+    ],
+    "targets": [
+      "node18-win-x64"
+    ]
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "pkg": "^5.8.1"
+  }
+}

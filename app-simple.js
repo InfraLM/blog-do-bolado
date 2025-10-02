@@ -2,7 +2,16 @@
 
 const express = require('express');
 const path = require('path');
-const { Client } = require('pg');
+// Tentar carregar pg, com fallback se não encontrar
+let Client;
+try {
+  const pg = require('pg');
+  Client = pg.Client;
+  console.log('✅ PostgreSQL carregado com sucesso');
+} catch (error) {
+  console.log('❌ Erro ao carregar PostgreSQL:', error.message);
+  console.log('⚠️  Modo sem banco de dados ativado');
+}
 const open = require('open');
 
 const app = express();
@@ -56,6 +65,10 @@ app.get('/', (req, res) => {
 
 // Testar conexão
 app.get('/api/test-connection', async (req, res) => {
+  if (!Client) {
+    return res.json({ success: false, message: 'PostgreSQL não disponível - módulo não carregado' });
+  }
+  
   try {
     const client = new Client(dbConfig);
     await client.connect();
@@ -68,6 +81,10 @@ app.get('/api/test-connection', async (req, res) => {
 
 // Publicar artigo
 app.post('/api/articles', async (req, res) => {
+  if (!Client) {
+    return res.status(500).json({ success: false, message: 'PostgreSQL não disponível - módulo não carregado' });
+  }
+  
   try {
     const { titulo, categoria, autor, content } = req.body;
     
@@ -121,6 +138,10 @@ app.post('/api/articles', async (req, res) => {
 
 // Listar artigos
 app.get('/api/articles', async (req, res) => {
+  if (!Client) {
+    return res.json({ success: false, message: 'PostgreSQL não disponível - módulo não carregado', articles: [] });
+  }
+  
   try {
     const client = new Client(dbConfig);
     await client.connect();
