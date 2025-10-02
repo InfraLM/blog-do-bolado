@@ -7,13 +7,14 @@
     "start": "electron .",
     "build": "electron-builder",
     "build-win": "electron-builder --win",
+    "build-portable": "electron-builder --win portable",
     "build-mac": "electron-builder --mac",
     "build-linux": "electron-builder --linux",
     "dist": "electron-builder --publish=never"
   },
   "build": {
     "appId": "com.liberdademedica.editor-artigos",
-    "productName": "Editor de Artigos - Blog Liberdade Médica",
+    "productName": "Editor de Artigos",
     "directories": {
       "output": "dist"
     },
@@ -23,23 +24,18 @@
       "node_modules/pg/**/*"
     ],
     "win": {
-      "target": "nsis",
-      "icon": "assets/icon.ico"
+      "target": [
+        {
+          "target": "portable",
+          "arch": ["x64"]
+        }
+      ]
     },
-    "mac": {
-      "target": "dmg",
-      "icon": "assets/icon.icns"
+    "portable": {
+      "artifactName": "EditorArtigos-Portable.exe"
     },
-    "linux": {
-      "target": "AppImage",
-      "icon": "assets/icon.png"
-    },
-    "nsis": {
-      "oneClick": false,
-      "allowToChangeInstallationDirectory": true,
-      "createDesktopShortcut": true,
-      "createStartMenuShortcut": true
-    }
+    "compression": "store",
+    "removePackageScripts": true
   },
   "keywords": [
     "blog",

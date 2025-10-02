@@ -27,9 +27,34 @@ Aplicação desktop standalone para criação de artigos médicos que pode ser c
 ### Para o Usuário Final:
 - **Nenhum!** O arquivo .exe é standalone
 
-## 🚀 Como Gerar o Executável
+## 🚀 Como Gerar o Arquivo .EXE
 
-### **Opção 1: Script Automático (Windows)**
+### **⚡ Método Rápido (RECOMENDADO)**
+
+**Executável Portátil - Não precisa privilégios de administrador:**
+
+1. **Execute o script portátil**:
+   ```cmd
+   build_portable.bat
+   ```
+
+2. **Resultado**: `dist/EditorArtigos-Portable.exe`
+   - Arquivo único
+   - Não precisa instalação
+   - Execução direta
+
+### **🔐 Método Completo (Precisa Admin)**
+
+**Instalador com Setup - Requer privilégios de administrador:**
+
+1. **Clique com botão direito** no PowerShell/CMD
+2. **Selecione** "Executar como administrador"
+3. **Execute**:
+   ```cmd
+   build_admin.bat
+   ```
+
+### **🛠️ Método Original (Pode dar erro)**
 
 1. **Execute o instalador**:
    ```cmd
@@ -41,33 +66,23 @@ Aplicação desktop standalone para criação de artigos médicos que pode ser c
    build_exe.bat
    ```
 
-3. **Encontre o arquivo**: `dist/Editor de Artigos - Blog Liberdade Médica Setup.exe`
+**Se der erro de privilégios, use os métodos acima.**
 
-### **Opção 2: Comandos Manuais**
+### **📋 Comandos Manuais**
 
-1. **Instale dependências**:
-   ```bash
-   npm install
-   ```
+```bash
+# Instalar dependências
+npm install
 
-2. **Teste a aplicação** (opcional):
-   ```bash
-   npm start
-   ```
+# Testar aplicação (opcional)
+npm start
 
-3. **Gere o executável**:
-   ```bash
-   # Para Windows
-   npm run build-win
-   
-   # Para Mac
-   npm run build-mac
-   
-   # Para Linux
-   npm run build-linux
-   ```
+# Gerar executável portátil (recomendado)
+npm run build-portable
 
-## 📁 Estrutura do Projeto
+# Gerar instalador completo (precisa admin)
+npm run build-win
+```## 📁 Estrutura do Projeto
 
 ```
 blog-editor-desktop/
