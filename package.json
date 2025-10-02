@@ -6,8 +6,9 @@
   "scripts": {
     "start": "electron .",
     "build": "electron-builder",
-    "build-win": "electron-builder --win",
-    "build-portable": "electron-builder --win portable",
+    "build-win": "electron-builder --win --config.win.sign=null",
+    "build-portable": "electron-builder --win portable --config.win.sign=null",
+    "build-simple": "electron-builder --win dir --config.win.sign=null",
     "build-mac": "electron-builder --mac",
     "build-linux": "electron-builder --linux",
     "dist": "electron-builder --publish=never"
@@ -28,14 +29,23 @@
         {
           "target": "portable",
           "arch": ["x64"]
+        },
+        {
+          "target": "dir",
+          "arch": ["x64"]
         }
-      ]
+      ],
+      "sign": null,
+      "verifyUpdateCodeSignature": false
     },
     "portable": {
       "artifactName": "EditorArtigos-Portable.exe"
     },
     "compression": "store",
-    "removePackageScripts": true
+    "removePackageScripts": true,
+    "electronDownload": {
+      "cache": "./electron-cache"
+    }
   },
   "keywords": [
     "blog",
